@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drill Bros Doughnuts - 官方网页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fef9f3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: #ff6b8b;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: #fffacd;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #fffacd;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* 英雄区域样式 */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://img11.360buyimg.com/ddimg/jfs/t1/391156/37/756/31193/696b70fbF36ef8911/00152e01a4462b42.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+            color: #ffcc00;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6b8b;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 139, 0.4);
+        }
+        
+        .cta-button:hover {
+            background-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 139, 0.6);
+        }
+        
+        /* 特色区域样式 */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+        
+        .feature {
+            flex-basis: 30%;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature i {
+            font-size: 3rem;
+            color: #ff6b8b;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* 团队介绍样式 */
+        .team {
+            background-color: white;
+            border-radius: 15px;
+            padding: 50px 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 80px;
+        }
+        
+        .team h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ff6b8b;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .team-members {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .team-member {
+            text-align: center;
+            flex-basis: 45%;
+            margin-bottom: 40px;
+        }
+        
+        .member-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 5px solid #ffcc00;
+        }
+        
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .team-member p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .role {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        /* 产品展示样式 */
+        .products {
+            margin-bottom: 80px;
+        }
+        
+        .products h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ff6b8b;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: #ff6b8b;
+            font-size: 1.3rem;
+        }
+        
+        /* 订单区域样式 */
+        .order {
+            background-color: #ff6b8b;
+            color: white;
+            border-radius: 15px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .order h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .order p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .order-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #ffdd44;
+            transform: translateY(-3px);
+        }
+        
+        /* 订单信息查看区样式 */
+        .order-info-section {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            border: 2px dashed #ddd;
+        }
+
+        .order-info-section h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        .order-info-section h2 i {
+            color: #ff6b8b;
+            margin-right: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* 密码输入区 */
+        .password-section {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .password-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .password-input input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .password-input input:focus {
+            border-color: #ff6b8b;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.1);
+        }
+
+        .password-btn {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .password-btn:hover {
+            background-color: #3a5a8a;
+            transform: translateY(-2px);
+        }
+
+        .password-hint {
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* 订单显示区 */
+        .orders-display {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .orders-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .orders-header h3 {
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .orders-header h3 i {
+            color: #ff6b8b;
+            margin-right: 10px;
+        }
+
+        .orders-count {
+            background: #ff6b8b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* 订单控制按钮 */
+        .orders-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .control-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .delete-btn {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .refresh-btn {
+            background-color: #4ecdc4;
+            color: white;
+        }
+
+        .refresh-btn:hover {
+            background-color: #3dbdb4;
+            transform: translateY(-2px);
+        }
+
+        /* 订单列表 */
+        .orders-list {
+            margin-top: 20px;
+        }
+
+        .no-orders {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .no-orders i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        /* 单个订单卡片 */
+        .order-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ff6b8b;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .order-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-id {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .order-time {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .order-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .order-item {
+            padding: 10px 0;
+        }
+
+        .order-label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .order-value {
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .order-address {
+            grid-column: 1 / -1;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .order-status {
+            background: #ffcc00;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .delete-order-btn {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .delete-order-btn:hover {
+            color: #ff5252;
+            transform: scale(1.2);
+        }
+
+        /* 订单统计 */
+        .orders-stats {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+
+        .orders-stats h4 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .orders-stats h4 i {
+            color: #4ecdc4;
+            margin-right: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b8b;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* 错误提示 */
+        .error-message {
+            background: #ffe6e6;
+            color: #d63031;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            border-left: 4px solid #d63031;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        /* 底部样式 */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex-basis: 30%;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 15px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: #ff6b8b;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media screen and (max-width: 992px) {
+            .feature {
+                flex-basis: 48%;
+            }
+            
+            .team-member {
+                flex-basis: 100%;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            .mobile-menu {
+                display: none;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .feature {
+                flex-basis: 100%;
+            }
+            
+            .footer-column {
+                flex-basis: 100%;
+            }
+            
+            .order-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .password-input {
+                flex-direction: column;
+            }
+            
+            .password-btn {
+                justify-content: center;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .team, .order {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-doughnut"></i>
+                    <h1>Drill Bros Doughnuts</h1>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="mobile-menu" id="mobileMenu">
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#products">产品展示</a></li>
+                        <li><a href="#team">我们的团队</a></li>
+                        <li><a href="#order">在线订购</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>甜甜圈出售:3</h1>
+            <p>欢迎来到Drill Bros Doughnuts！我们每天新鲜制作各种口味的甜甜圈，使用最优质的原料，带给您最甜蜜的体验。无论是传统口味还是创新组合，总有一款能满足您的味蕾。<br>店内菜单每周更新<3</p>
+            <a href="#order" class="cta-button">立即订购</a>
+        </div>
+    </section>
+
+    <!-- 特色区域 -->
+    <section class="features">
+        <div class="container">
+            <div class="feature">
+                <i class="fas fa-leaf"></i>
+                <h3>新鲜原料</h3>
+                <p>芬威集团here we go！最新鲜、高质量原料每日自动出现在后厨，店长表示不知道是哪里送来的。</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-clock"></i>
+                <h3>每日现做</h3>
+                <p>所有甜甜圈都是当天手工制作，多米尼克拳拳上班情送给原店长和芬威。我们承诺绝不售卖隔夜产品。</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>快速配送</h3>
+                <p>下单后30分钟内k2kz吭哧吭哧为你配送。问就是外卖员跑酷中……</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 团队介绍 -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2>Drill Bros…</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="https://img12.360buyimg.com/ddimg/jfs/t1/391068/7/636/24071/696b6779F1cc3246b/001528029413118b.jpg" alt="店长多米尼克">
+                    </div>
+                    <h3>多米尼克</h3>
+                    <span class="role">代理店长 & 主厨</span>
+                    <p>很不幸！多米尼克拥有0年烘焙经验。但芬威集团赞助的甜甜圈菜单会助力餐品的制作。多米尼克擅长创造独特口味的甜甜圈，他对甜点的热情和对品质的执着，让每一款产品都成为艺术品。</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="https://img13.360buyimg.com/ddimg/jfs/t1/388811/29/4735/27633/696b6768Fed20d622/001528a280c0174a.jpg" alt="配送员米洛斯">
+                    </div>
+                    <h3>米洛斯</h3>
+                    <span class="role">首席配送员</span>
+                    <p>米洛斯是我们团队的闪电侠，确保每一份订单都能快速、安全地送达。他擅长游泳、跑酷以及给甜甜圈打洞，能够熟练运用电钻、电驴等工具，以热情的服务和准时送达而受到顾客的喜爱。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2>Pick Me!!</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://img11.360buyimg.com/ddimg/jfs/t1/385391/23/16807/48675/696b6d72F01e2bd50/001532024d7d08ca.jpg" alt="经典糖霜甜甜圈">
+                    </div>
+                    <div class="product-info">
+                        <h3>经典糖霜甜甜圈</h3>
+                        <p>多米得意之作！传统酵母面团制成，表面撒满香甜糖霜，简单却美味。</p>
+                        <div class="price">¥12</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://img11.360buyimg.com/ddimg/jfs/t1/385391/23/16807/48675/696b6d72F01e2bd50/001532024d7d08ca.jpg" alt="巧克力淋面甜甜圈">
+                    </div>
+                    <div class="product-info">
+                        <h3>巧克力淋面甜甜圈</h3>
+                        <p>星期三特别优惠！浓郁的黑巧克力淋面，视觉与味觉的双重享受。</p>
+                        <div class="price">¥15</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://img11.360buyimg.com/ddimg/jfs/t1/385391/23/16807/48675/696b6d72F01e2bd50/001532024d7d08ca.jpg" alt="草莓果酱填充甜甜圈">
+                    </div>
+                    <div class="product-info">
+                        <h3>草莓果酱填充甜甜圈</h3>
+                        <p>松软的面包裹着新鲜草莓果酱，每一口都有惊喜。店长倾情附赠纸巾三张。</p>
+                        <div class="price">¥18</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://img11.360buyimg.com/ddimg/jfs/t1/385391/23/16807/48675/696b6d72F01e2bd50/001532024d7d08ca.jpg" alt="薯条套餐">
+                    </div>
+                    <div class="product-info">
+                        <h3>薯条套餐</h3>
+                        <p>复合型薯条，形状根据厨师心情变化。多种酱料选择。</p>
+                        <div class="price">¥9.9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订单区域 -->
+    <section class="order" id="order">
+        <div class="container">
+            <h2>在线订购</h2>
+            <p>填写以下表单，我们的配送员米洛斯会尽快将新鲜的甜甜圈送到您手中！</p>
+            <form class="order-form">
+                <div class="form-group">
+                    <label for="name">姓名：</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">电话：</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">配送地址：</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="product">选择产品：</label>
+                    <select id="product" name="product" required>
+                        <option value="">请选择</option>
+                        <option value="classic">经典糖霜甜甜圈 (¥12)</option>
+                        <option value="chocolate">巧克力淋面甜甜圈 (¥15)</option>
+                        <option value="strawberry">草莓果酱填充甜甜圈 (¥18)</option>
+                        <option value="matcha">薯条套餐(¥9.9)</option>
+                        <option value="assorted">更多选择请在店内进行或电话联络 (¥0)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">数量：</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="20" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">特别要求：</label>
+                    <textarea id="message" name="message" placeholder="如有特殊要求请在此填写..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">提交订单</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 订单信息查看区 -->
+    <section class="order-info-section" id="order-info">
+        <div class="container">
+            <h2><i class="fas fa-lock"></i> 订单信息查询</h2>
+            <p class="section-subtitle">店主专用 - 查看所有顾客订单</p>
+            
+            <!-- 密码输入区 -->
+            <div class="password-section">
+                <div class="password-input">
+                    <input type="password" id="passwordInput" placeholder="输入密码查看订单信息">
+                    <button onclick="checkPassword()" class="password-btn">
+                        <i class="fas fa-key"></i> 解锁
+                    </button>
+                </div>
+                <p class="password-hint">提示：尊敬的店长先生！</p>
+            </div>
+            
+            <!-- 订单信息显示区（默认隐藏） -->
+            <div class="orders-display" id="ordersDisplay" style="display: none;">
+                <div class="orders-header">
+                    <h3><i class="fas fa-list-alt"></i> 所有订单列表</h3>
+                    <div class="orders-count">
+                        <span id="ordersCount">0</span> 个订单
+                    </div>
+                </div>
+                
+                <div class="orders-controls">
+                    <button onclick="clearAllOrders()" class="control-btn delete-btn">
+                        <i class="fas fa-trash"></i> 清空所有订单
+                    </button>
+                    <button onclick="refreshOrders()" class="control-btn refresh-btn">
+                        <i class="fas fa-sync"></i> 刷新列表
+                    </button>
+                </div>
+                
+                <!-- 订单列表容器 -->
+                <div class="orders-list" id="ordersList">
+                    <!-- 订单将动态显示在这里 -->
+                    <div class="no-orders" id="noOrders">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>还没有订单记录</p>
+                    </div>
+                </div>
+                
+                <!-- 订单统计 -->
+                <div class="orders-stats" id="ordersStats" style="display: none;">
+                    <h4><i class="fas fa-chart-bar"></i> 订单统计</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value" id="totalOrders">0</span>
+                            <span class="stat-label">总订单数</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="todayOrders">0</span>
+                            <span class="stat-label">今日订单</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="totalItems">0</span>
+                            <span class="stat-label">甜甜圈总数</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 密码错误提示 -->
+            <div id="passwordError" class="error-message" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i> 密码错误，请重试
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部区域 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Drill Bros Doughnuts</h3>
+                    <p>我们致力于制作最美味的甜甜圈直至店长回归，不卖鼙鼓，愿为您的每一天增添甜蜜。</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#products">产品展示</a></li>
+                        <li><a href="#team">我们的团队</a></li>
+                        <li><a href="#order">在线订购</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 甜蜜路123号，甜甜圈市</li>
+                        <li><i class="fas fa-phone"></i>（44）66-7788</li>
+                        <li><i class="fas fa-envelope"></i> 但请尽量别联系我们</li>
+                        <li><i class="fas fa-clock"></i> 营业时间: 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2x26 Drill Bros Doughnuts. 保留所有权利. | 设计: 多米尼克</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+            
+            // 切换图标
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 表单提交处理 - 修改后的版本（保存订单功能）
+        document.querySelector('.order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const product = document.getElementById('product').options[document.getElementById('product').selectedIndex].text;
+            const quantity = document.getElementById('quantity').value;
+            const message = document.getElementById('message').value;
+            
+            // 创建订单对象
+            const order = {
+                name: name,
+                phone: phone,
+                address: address,
+                product: product,
+                quantity: quantity,
+                message: message,
+                id: 'order_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                timestamp: new Date().toISOString()
+            };
+            
+            // 保存订单到本地存储
+            const orders = getOrders();
+            orders.push(order);
+            localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(orders));
+            
+            // 显示成功消息
+            alert(`感谢 ${name} 的订单！\n\n您订购了: ${product}\n数量: ${quantity}\n\n我们的配送员米洛斯会尽快将订单送达！`);
+            
+            // 重置表单
+            this.reset();
+            document.getElementById('quantity').value = 1;
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // 关闭移动端菜单
+                const mobileMenu = document.getElementById('mobileMenu');
+                const menuBtnIcon = document.querySelector('#mobileMenuBtn i');
+                
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    menuBtnIcon.classList.remove('fa-times');
+                    menuBtnIcon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // ===========================================
+        // 订单管理系统（新增代码从这里开始）
+        // ===========================================
+        
+        const ORDER_STORAGE_KEY = 'drillBrosOrders';
+        const CORRECT_PASSWORD = 'dominik';
+        
+        // 检查密码并显示订单
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const ordersDisplay = document.getElementById('ordersDisplay');
+            const passwordError = document.getElementById('passwordError');
+            
+            if (passwordInput.value === CORRECT_PASSWORD) {
+                ordersDisplay.style.display = 'block';
+                passwordError.style.display = 'none';
+                passwordInput.value = '';
+                loadAndDisplayOrders();
+            } else {
+                passwordError.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+                
+                setTimeout(() => {
+                    passwordError.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        // 获取所有订单
+        function getOrders() {
+            const ordersJson = localStorage.getItem(ORDER_STORAGE_KEY);
+            return ordersJson ? JSON.parse(ordersJson) : [];
+        }
+        
+        // 加载并显示所有订单
+        function loadAndDisplayOrders() {
+            const orders = getOrders();
+            const ordersList = document.getElementById('ordersList');
+            const noOrders = document.getElementById('noOrders');
+            const ordersCount = document.getElementById('ordersCount');
+            const ordersStats = document.getElementById('ordersStats');
+            
+            ordersCount.textContent = orders.length;
+            ordersList.innerHTML = '';
+            ordersList.appendChild(noOrders);
+            
+            if (orders.length === 0) {
+                noOrders.style.display = 'block';
+                ordersStats.style.display = 'none';
+                return;
+            }
+            
+            noOrders.style.display = 'none';
+            ordersStats.style.display = 'block';
+            updateOrderStats(orders);
+            
+            orders.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            orders.forEach((order, index) => {
+                const orderElement = createOrderElement(order, index + 1);
+                ordersList.appendChild(orderElement);
+            });
+        }
+        
+        // 创建订单元素
+        function createOrderElement(order, orderNumber) {
+            const orderTime = new Date(order.timestamp);
+            const timeString = orderTime.toLocaleString('zh-CN');
+            
+            const orderCard = document.createElement('div');
+            orderCard.className = 'order-card';
+            orderCard.id = `order-${order.id}`;
+            
+            orderCard.innerHTML = `
+                <div class="order-header">
+                    <div class="order-id">订单 #${orderNumber}</div>
+                    <div class="order-time">${timeString}</div>
+                </div>
+                
+                <div class="order-content">
+                    <div class="order-item">
+                        <div class="order-label">顾客姓名</div>
+                        <div class="order-value">${order.name}</div>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="order-label">联系电话</div>
+                        <div class="order-value">${order.phone}</div>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="order-label">产品</div>
+                        <div class="order-value">${order.product}</div>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="order-label">数量</div>
+                        <div class="order-value">${order.quantity} 个</div>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="order-label">配送员</div>
+                        <div class="order-value">米洛斯</div>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="order-label">状态</div>
+                        <div class="order-value">等待配送</div>
+                    </div>
+                    
+                    <div class="order-address">
+                        <div class="order-label">配送地址</div>
+                        <div class="order-value">${order.address}</div>
+                    </div>
+                </div>
+                
+                ${order.message ? `
+                <div class="order-message">
+                    <div class="order-label">特别要求</div>
+                    <div class="order-value">${order.message}</div>
+                </div>
+                ` : ''}
+                
+                <div class="order-footer">
+                    <div class="order-status">待处理</div>
+                    <button onclick="deleteOrder('${order.id}')" class="delete-order-btn" title="删除订单">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            
+            return orderCard;
+        }
+        
+        // 更新订单统计
+        function updateOrderStats(orders) {
+            const totalOrders = orders.length;
+            const today = new Date().toDateString();
+            const todayOrders = orders.filter(order => 
+                new Date(order.timestamp).toDateString() === today
+            ).length;
+            
+            const totalItems = orders.reduce((sum, order) => 
+                sum + parseInt(order.quantity), 0
+            );
+            
+            document.getElementById('totalOrders').textContent = totalOrders;
+            document.getElementById('todayOrders').textContent = todayOrders;
+            document.getElementById('totalItems').textContent = totalItems;
+        }
+        
+        // 删除订单
+        function deleteOrder(orderId) {
+            if (!confirm('确定要删除这个订单吗？')) {
+                return;
+            }
+            
+            const orders = getOrders();
+            const updatedOrders = orders.filter(order => order.id !== orderId);
+            localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(updatedOrders));
+            
+            const orderElement = document.getElementById(`order-${orderId}`);
+            if (orderElement) {
+                orderElement.remove();
+            }
+            
+            loadAndDisplayOrders();
+        }
+        
+        // 清空所有订单
+        function clearAllOrders() {
+            if (!confirm('确定要清空所有订单吗？此操作不可撤销！')) {
+                return;
+            }
+            
+            localStorage.removeItem(ORDER_STORAGE_KEY);
+            loadAndDisplayOrders();
+        }
+        
+        // 刷新订单列表
+        function refreshOrders() {
+            loadAndDisplayOrders();
+        }
+    </script>
+</body>
+</html>
